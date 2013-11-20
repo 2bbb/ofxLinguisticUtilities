@@ -2,6 +2,8 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
+    using namespace ofxLinguisticUtilitiesConstant;
+    
     string ________________ = "\n **** **** **** **** **** **** **** **** \n\n";
     
     string taggingString = "Hello, I am a pen in Japan.";
@@ -15,8 +17,8 @@ void ofApp::setup(){
     ofLogNotice("main:Result1") << "\"" << result.getText()<< "\" (" << result.getLanguage() << ", " << result.getScheme() << ")";
     
     for(int i = 0; i < result.size(); i++) {
-        ofxLinguisticTag &tag = result[i];
-        ofLogNotice("main:Result1") << tag.tag << " : " << tag.token << " (" << tag.begin << ", " << tag.length << ")";
+        const ofxLinguisticTag &tag = result[i];
+        ofLogNotice("main:Result1") << tag.tag << " : " << tag.token << " (" << tag.tokenBegin << ", " << tag.tokenLength << ")";
     }
 
     cout << ________________;
@@ -32,8 +34,8 @@ void ofApp::setup(){
     ofLogNotice("main:Result2") << "\"" << result.getText()<< "\" (" << result.getLanguage() << ", " << result.getScheme() << ")";
     
     for(int i = 0; i < result.size(); i++) {
-        ofxLinguisticTag &tag = result[i];
-        ofLogNotice("main:Result2") << tag.tag << " : " << tag.token << " (" << tag.begin << ", " << tag.length << ")";
+        const ofxLinguisticTag &tag = result[i];
+        ofLogNotice("main:Result2") << tag.tag << " : " << tag.token << " (" << tag.tokenBegin << ", " << tag.tokenLength << ")";
     }
     
     cout << ________________;
@@ -43,23 +45,23 @@ void ofApp::setup(){
     using namespace ofxStringTransform;
     string hello001 = "こんにちは１１１";
     ofLogNotice("main:Result3.0") << hello001;
-    hello001 = transform(hello001, ofxStringTransformToLatin, false);
+    hello001 = transform(hello001, TransformType::ToLatin, false);
     ofLogNotice("main:Result3.1") << hello001;
-    hello001 = transform(hello001, ofxStringTransformFullwidthHalfwidth, false);
+    hello001 = transform(hello001, TransformType::FullwidthHalfwidth, false);
     ofLogNotice("main:Result3.2") << hello001;
     
     cout << ________________;
     
     string openframeworks = "openFrameworks";
     ofLogNotice("main:Result4.0") << openframeworks;
-    openframeworks = transform(openframeworks, ofxStringTransformLatinGreek, false);
+    openframeworks = transform(openframeworks, TransformType::LatinGreek, false);
     ofLogNotice("main:Result4.1") << openframeworks;
     
     cout << ________________;
 
     openframeworks = "openFrameworks";
     ofLogNotice("main:Result5.0") << openframeworks;
-    openframeworks = transform(openframeworks, ofxStringTransformLatinCyrillic, false);
+    openframeworks = transform(openframeworks, TransformType::LatinCyrillic, false);
     ofLogNotice("main:Result5.1") << openframeworks;
     
     cout << ________________;
