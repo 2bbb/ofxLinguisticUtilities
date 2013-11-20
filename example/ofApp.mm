@@ -2,6 +2,8 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
+    string ________________ = "\n **** **** **** **** **** **** **** **** \n\n";
+    
     string taggingString = "Hello, I am a pen in Japan.";
     string taggingLanguage = "en";
     vector<string> schemes = ofxLinguisticTagger::availableTagSchemes(taggingLanguage);
@@ -16,6 +18,8 @@ void ofApp::setup(){
         ofxLinguisticTag &tag = result[i];
         ofLogNotice("main:Result1") << tag.tag << " : " << tag.token << " (" << tag.begin << ", " << tag.length << ")";
     }
+
+    cout << ________________;
     
     taggingString = "こんにちは、私は日本のペンです。";
     taggingLanguage = "ja";
@@ -32,24 +36,40 @@ void ofApp::setup(){
         ofLogNotice("main:Result2") << tag.tag << " : " << tag.token << " (" << tag.begin << ", " << tag.length << ")";
     }
     
+    cout << ________________;
+    
     // ofxLinguisticTransform
     
+    using namespace ofxStringTransform;
     string hello001 = "こんにちは１１１";
     ofLogNotice("main:Result3.0") << hello001;
-    hello001 = ofxStringTransform::transform(hello001, ofxStringTransformToLatin, false);
+    hello001 = transform(hello001, ofxStringTransformToLatin, false);
     ofLogNotice("main:Result3.1") << hello001;
-    hello001 = ofxStringTransform::transform(hello001, ofxStringTransformFullwidthHalfwidth, false);
+    hello001 = transform(hello001, ofxStringTransformFullwidthHalfwidth, false);
     ofLogNotice("main:Result3.2") << hello001;
+    
+    cout << ________________;
     
     string openframeworks = "openFrameworks";
     ofLogNotice("main:Result4.0") << openframeworks;
-    openframeworks = ofxStringTransform::transform(openframeworks, ofxStringTransformLatinGreek, false);
+    openframeworks = transform(openframeworks, ofxStringTransformLatinGreek, false);
     ofLogNotice("main:Result4.1") << openframeworks;
     
+    cout << ________________;
+
     openframeworks = "openFrameworks";
     ofLogNotice("main:Result5.0") << openframeworks;
-    openframeworks = ofxStringTransform::transform(openframeworks, ofxStringTransformLatinCyrillic, false);
+    openframeworks = transform(openframeworks, ofxStringTransformLatinCyrillic, false);
     ofLogNotice("main:Result5.1") << openframeworks;
+    
+    cout << ________________;
+    
+    string dog = "🐶";
+    ofLogNotice("main:Result6.0") << dog;
+    string dogName = getUnicodeName(dog);
+    ofLogNotice("main:Result6.1") << dogName;
+    string dogXMLHex = getXMLHex(dog);
+    ofLogNotice("main:Result6.2") << dogXMLHex;
 }
 
 //--------------------------------------------------------------
