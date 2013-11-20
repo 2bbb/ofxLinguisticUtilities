@@ -15,6 +15,8 @@
 
 namespace ofxStringTransform {
     string transform(string text, string type, bool bReverse);
+    string getUnicodeName(string text);
+    string getXMLHex(string text);
 };
 
 #endif /* defined(__ofxLinguisticTaggerExample__ofxStringTransform__) */

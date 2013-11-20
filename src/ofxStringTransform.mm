@@ -21,3 +21,11 @@ string ofxStringTransform::transform(string text, string transformType = ofxStri
         return "";
     }
 }
+
+string ofxStringTransform::getUnicodeName(string text) {
+    return transform(text, ofxStringTransformToUnicodeName);
+}
+
+string ofxStringTransform::getXMLHex(string text) {
+    return transform(text, ofxStringTransformToXMLHex);
+}
