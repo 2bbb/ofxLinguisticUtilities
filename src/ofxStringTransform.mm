@@ -11,7 +11,8 @@
 
 #import <CoreFoundation/CoreFoundation.h>
 
-string ofxStringTransform::transform(string text, string transformType = ofxStringTransformToLatin, bool bReverse = false) {
+using namespace ofxLinguisticUtilitiesConstant::TransformType;
+string ofxStringTransform::transform(string text, string transformType = ToLatin, bool bReverse = false) {
     CFMutableStringRef resultRef = (CFMutableStringRef)[NSMutableString stringWithString:convert(text)];
     CFStringRef type = (CFStringRef)convert(transformType);
     if(CFStringTransform(resultRef, NULL, type, (BOOL)bReverse)) {
@@ -23,9 +24,9 @@ string ofxStringTransform::transform(string text, string transformType = ofxStri
 }
 
 string ofxStringTransform::getUnicodeName(string text) {
-    return transform(text, ofxStringTransformToUnicodeName);
+    return transform(text, ToUnicodeName);
 }
 
 string ofxStringTransform::getXMLHex(string text) {
-    return transform(text, ofxStringTransformToXMLHex);
+    return transform(text, ToXMLHex);
 }
