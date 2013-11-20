@@ -16,8 +16,10 @@
 typedef struct {
     string tag;
     string token;
-    int begin;
-    int length;
+    int tokenBegin;
+    int tokenLength;
+    int sentenceBegin;
+    int sentenceLength;
 } ofxLinguisticTag;
 
 class ofxLinguisticTagResult {
@@ -28,36 +30,38 @@ public:
         this->scheme   = scheme;
     }
     
-    int size() {
+    const int size() const {
         return tags.size();
     }
     
-    ofxLinguisticTag &operator [](int n) {
+    const ofxLinguisticTag &operator [](int n) const {
         return tags[n];
     }
     
-    void addTag(NSString *tag, NSString *token, int begin, int length) {
+    void addTag(NSString *tag, NSString *token, int tokenBegin, int tokenLength, int sentenceBegin, int sentenceLength) {
         tags.push_back((ofxLinguisticTag) {
             .tag    = convert(tag),
             .token  = convert(token),
-            .begin  = begin,
-            .length = length
+            .tokenBegin  = tokenBegin,
+            .tokenLength = tokenLength,
+            .sentenceBegin = sentenceBegin,
+            .sentenceLength = sentenceLength
         });
     }
     
-    vector<ofxLinguisticTag> &getTags() {
+    const vector<ofxLinguisticTag> &getTags() const {
         return tags;
     }
     
-    string &getText() {
+    const string &getText() const {
         return text;
     }
     
-    string &getLanguage() {
+    const string &getLanguage() const {
         return language;
     }
     
-    string &getScheme() {
+    const string &getScheme() const {
         return scheme;
     }
     
@@ -67,7 +71,6 @@ private:
     string language;
     string scheme;
 };
-
 
 class ofxLinguisticTagger {
 public:

@@ -27,7 +27,7 @@ ofxLinguisticTagResult ofxLinguisticTagger::tagging(string _text, string languag
                          options:options
                       usingBlock:^(NSString *tag, NSRange tokenRange, NSRange sentenceRange, BOOL *stop) {
                           NSString *token = [text substringWithRange:tokenRange];
-                          result.addTag(tag, token, tokenRange.location, tokenRange.length);
+                          result.addTag(tag, token, tokenRange.location, tokenRange.length, sentenceRange.location, sentenceRange.length);
                       }];
     
     return result;
