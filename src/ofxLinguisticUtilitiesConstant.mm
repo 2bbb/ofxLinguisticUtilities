@@ -45,6 +45,15 @@ const string TagScheme::Script = STRING(NSLinguisticTagSchemeScript);
 
 #pragma mark namespace TagType
 
+#pragma mark namespace TagType::TokenType
+
+const string TagType::TokenType::Word = STRING(NSLinguisticTagWord);
+const string TagType::TokenType::Punctuation = STRING(NSLinguisticTagPunctuation);
+const string TagType::TokenType::Whitespace = STRING(NSLinguisticTagWhitespace);
+const string TagType::TokenType::Other = STRING(NSLinguisticTagOther);
+
+#pragma mark namespace TagType::LexicalClass
+
 const string TagType::LexicalClass::Noun = STRING(NSLinguisticTagNoun);
 const string TagType::LexicalClass::Verb = STRING(NSLinguisticTagVerb);
 const string TagType::LexicalClass::Adjective = STRING(NSLinguisticTagAdjective);
@@ -69,6 +78,8 @@ const string TagType::LexicalClass::Dash = STRING(NSLinguisticTagDash);
 const string TagType::LexicalClass::OtherPunctuation = STRING(NSLinguisticTagOtherPunctuation);
 const string TagType::LexicalClass::ParagraphBreak = STRING(NSLinguisticTagParagraphBreak);
 const string TagType::LexicalClass::OtherWhitespace = STRING(NSLinguisticTagOtherWhitespace);
+
+#pragma mark namespace TagType::NameType
 
 const string TagType::NameType::PersonalName = STRING(NSLinguisticTagPersonalName);
 const string TagType::NameType::PlaceName = STRING(NSLinguisticTagPlaceName);

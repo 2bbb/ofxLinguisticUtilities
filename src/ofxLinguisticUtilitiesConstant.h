@@ -56,6 +56,12 @@ namespace ofxLinguistic {
     };
     
     namespace TagType {
+        namespace TokenType {
+            extern const string Word;
+            extern const string Punctuation;
+            extern const string Whitespace;
+            extern const string Other;
+        };
         namespace LexicalClass {
             extern const string Noun;
             extern const string Verb;
