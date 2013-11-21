@@ -24,8 +24,8 @@ namespace ofxLinguistic {
         string dominantScript;
     } Orthography;
     
-    Orthography getLanguageDetail(string text);
-    string getLanguageCode(string text);
+    Orthography detectLanguageDetail(string text);
+    string detectLanguageCode(string text);
 };
 
 #endif /* defined(__ofxLinguisticTaggingUtility__) */

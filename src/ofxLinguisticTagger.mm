@@ -16,12 +16,10 @@ vector<string> Tagger::availableTagSchemes(string language) {
 }
 
 TagResult Tagger::tagging(string text) {
-    string languageCode = getLanguageCode(text);
-    NSArray *schemes = [NSLinguisticTagger availableTagSchemesForLanguage:convert(languageCode)];
-    string tagScheme = convert((NSString *)[schemes objectAtIndex:0]);
-    
-    return tagging(text, languageCode, tagScheme);
+    string languageCode = detectLanguageCode(text);
+    return tagging(text, languageCode);
 }
+
 
 TagResult Tagger::tagging(string text, string languageCode) {
     NSArray *schemes = [NSLinguisticTagger availableTagSchemesForLanguage:convert(languageCode)];

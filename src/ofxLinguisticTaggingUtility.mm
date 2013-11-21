@@ -10,7 +10,7 @@
 
 using namespace ofxLinguistic;
 
-Orthography ofxLinguistic::getLanguageDetail(string _text) {
+Orthography ofxLinguistic::detectLanguageDetail(string _text) {
     NSArray *schemes = [NSLinguisticTagger availableTagSchemesForLanguage:@""];
     NSLinguisticTagger *tagger = [[NSLinguisticTagger alloc] initWithTagSchemes:schemes
                                                                         options:0];
@@ -31,7 +31,7 @@ Orthography ofxLinguistic::getLanguageDetail(string _text) {
     };
 }
 
-string ofxLinguistic::getLanguageCode(string _text) {
+string ofxLinguistic::detectLanguageCode(string _text) {
     NSString *text = convert(_text);
     NSString *token = (NSString *)CFStringTokenizerCopyBestStringLanguage((CFStringRef)text, CFRangeMake(0, MIN(text.length, 100)));
     return convert(token);

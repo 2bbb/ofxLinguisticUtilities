@@ -75,8 +75,8 @@ void ofApp::setup(){
     
     cout << ________________;
     
-    ofLogNotice("main:Result2.0") << getLanguageCode(taggingString);
-    Orthography orth = getLanguageDetail(taggingString);
+    ofLogNotice("main:Result2.0") << detectLanguageCode(taggingString);
+    Orthography orth = detectLanguageDetail(taggingString);
     ofLogNotice("main:Result2.0") << orth.dominantScript << ", " << orth.dominantLanguage;
     ofLogNotice("main:Result2.0") << "all language codes";
     for(int i = 0; i < orth.languageCodes.size(); i++) {
