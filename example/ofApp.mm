@@ -7,7 +7,7 @@ void ofApp::setup(){
     string ________________ = "\n **** **** **** **** **** **** **** **** \n\n";
     
     string taggingString = "Hello, I am a pen in Japan.";
-    string taggingLanguage = "en";
+    string taggingLanguage = LanguageCode::English;
     vector<string> schemes = ofxLinguisticTagger::availableTagSchemes(taggingLanguage);
     for(int i = 0; i < schemes.size(); i++) {
         ofLogNotice("main:availableSchemes") << schemes[i];
@@ -24,7 +24,7 @@ void ofApp::setup(){
     cout << ________________;
     
     taggingString = "こんにちは、私は日本のペンです。";
-    taggingLanguage = "ja";
+    taggingLanguage = LanguageCode::Japanese;
     schemes = ofxLinguisticTagger::availableTagSchemes(taggingLanguage);
     for(int i = 0; i < schemes.size(); i++) {
         ofLogNotice("main:availableSchemes") << schemes[i];
