@@ -14,12 +14,12 @@ void ofApp::setup(){
     }
     
     Tagger::tagging(taggingString, taggingLanguage);
-    TagResult result = Tagger::tagging(taggingString, taggingLanguage, schemes[6]);
-    ofLogNotice("main:Result1") << "\"" << result.getText()<< "\" (" << result.getLanguage() << ", " << result.getScheme() << ")";
+    TagResult result = Tagger::tagging(taggingString, taggingLanguage, TagScheme::NameTypeOrLexicalClass);
+    ofLogNotice("main:Result1.0") << "\"" << result.getText()<< "\" (" << result.getLanguage() << ", " << result.getScheme() << ")";
     
     for(int i = 0; i < result.size(); i++) {
         const Tag &tag = result[i];
-        ofLogNotice("main:Result1") << tag.tag << " : " << tag.token << " (" << tag.tokenBegin << ", " << tag.tokenLength << ")";
+        ofLogNotice("main:Result1.0") << tag.tag << " : " << tag.token << " (" << tag.tokenBegin << ", " << tag.tokenLength << ")";
     }
 
     cout << ________________;
@@ -32,47 +32,102 @@ void ofApp::setup(){
     }
     
     result = Tagger::tagging(taggingString, taggingLanguage, schemes[0]);
-    ofLogNotice("main:Result2") << "\"" << result.getText()<< "\" (" << result.getLanguage() << ", " << result.getScheme() << ")";
+    ofLogNotice("main:Result1.1") << "\"" << result.getText()<< "\" (" << result.getLanguage() << ", " << result.getScheme() << ")";
     
     for(int i = 0; i < result.size(); i++) {
         const Tag &tag = result[i];
-        ofLogNotice("main:Result2") << tag.tag << " : " << tag.token << " (" << tag.tokenBegin << ", " << tag.tokenLength << ")";
+        ofLogNotice("main:Result1.1") << tag.tag << " : " << tag.token << " (" << tag.tokenBegin << ", " << tag.tokenLength << ")";
     }
     
     cout << ________________;
     
-    // ofxLinguisticTransform
+    taggingString = "こんにちは、私は日本のペンです。 Hello, World.";
+    taggingLanguage = LanguageCode::Japanese;
+    schemes = Tagger::availableTagSchemes(taggingLanguage);
+    for(int i = 0; i < schemes.size(); i++) {
+        ofLogNotice("main:availableSchemes") << schemes[i];
+    }
+    
+    result = Tagger::tagging(taggingString, taggingLanguage, TagScheme::Script);
+    ofLogNotice("main:Result1.2") << "\"" << result.getText()<< "\" (" << result.getLanguage() << ", " << result.getScheme() << ")";
+    
+    for(int i = 0; i < result.size(); i++) {
+        const Tag &tag = result[i];
+        ofLogNotice("main:Result1.2") << tag.tag << " : " << tag.token << " (" << tag.tokenBegin << ", " << tag.tokenLength << ")";
+    }
+    
+    cout << ________________;
+    
+    taggingString = "こんにちは、私は日本のペンです。 Hello, World.";
+    taggingLanguage = LanguageCode::Japanese;
+    schemes = Tagger::availableTagSchemes(taggingLanguage);
+    for(int i = 0; i < schemes.size(); i++) {
+        ofLogNotice("main:availableSchemes") << schemes[i];
+    }
+    
+    result = Tagger::tagging(taggingString, taggingLanguage, TagScheme::Language);
+    ofLogNotice("main:Result1.3") << "\"" << result.getText()<< "\" (" << result.getLanguage() << ", " << result.getScheme() << ")";
+    
+    for(int i = 0; i < result.size(); i++) {
+        const Tag &tag = result[i];
+        ofLogNotice("main:Result1.3") << tag.tag << " : " << tag.token << " (" << tag.tokenBegin << ", " << tag.tokenLength << ")";
+    }
+    
+    cout << ________________;
+    
+    ofLogNotice("main:Result2.0") << getLanguageCode(taggingString);
+    Orthography orth = getLanguageDetail(taggingString);
+    ofLogNotice("main:Result2.0") << orth.dominantScript << ", " << orth.dominantLanguage;
+    ofLogNotice("main:Result2.0") << "all language codes";
+    for(int i = 0; i < orth.languageCodes.size(); i++) {
+        ofLogNotice("main:Result2.0") << " " << orth.languageCodes[i];
+    }
+    ofLogNotice("main:Result2.0") << "all script types";
+    for(int i = 0; i < orth.scriptTypes.size(); i++) {
+        ofLogNotice("main:Result2.0") << " " << orth.scriptTypes[i];
+    }
+
+    cout << ________________;
+    
+#pragma mark ofxLinguisticTransform example
     
     using namespace ofxStringTransform;
     string hello001 = "こんにちは１１１";
     ofLogNotice("main:Result3.0") << hello001;
     hello001 = transform(hello001, TransformType::ToLatin, false);
-    ofLogNotice("main:Result3.1") << hello001;
+    ofLogNotice("main:Result3.0") << hello001;
     hello001 = transform(hello001, TransformType::FullwidthHalfwidth, false);
-    ofLogNotice("main:Result3.2") << hello001;
+    ofLogNotice("main:Result3.0") << hello001;
     
     cout << ________________;
     
     string openframeworks = "openFrameworks";
-    ofLogNotice("main:Result4.0") << openframeworks;
+    ofLogNotice("main:Result3.1") << openframeworks;
     openframeworks = transform(openframeworks, TransformType::LatinGreek, false);
-    ofLogNotice("main:Result4.1") << openframeworks;
+    ofLogNotice("main:Result3.1") << openframeworks;
     
     cout << ________________;
 
     openframeworks = "openFrameworks";
-    ofLogNotice("main:Result5.0") << openframeworks;
+    ofLogNotice("main:Result3.2") << openframeworks;
     openframeworks = transform(openframeworks, TransformType::LatinCyrillic, false);
-    ofLogNotice("main:Result5.1") << openframeworks;
+    ofLogNotice("main:Result3.2") << openframeworks;
+    
+    cout << ________________;
+    
+    openframeworks = "openFrameworks";
+    ofLogNotice("main:Result3.2") << openframeworks;
+    openframeworks = transform(openframeworks, TransformType::LatinHangul, false);
+    ofLogNotice("main:Result3.2") << openframeworks;
     
     cout << ________________;
     
     string dog = "🐶";
-    ofLogNotice("main:Result6.0") << dog;
+    ofLogNotice("main:Result3.3") << dog;
     string dogName = getUnicodeName(dog);
-    ofLogNotice("main:Result6.1") << dogName;
+    ofLogNotice("main:Result3.3") << dogName;
     string dogXMLHex = getXMLHex(dog);
-    ofLogNotice("main:Result6.2") << dogXMLHex;
+    ofLogNotice("main:Result3.3") << dogXMLHex;
 }
 
 //--------------------------------------------------------------

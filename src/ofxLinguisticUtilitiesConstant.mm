@@ -10,6 +10,8 @@
 
 using namespace ofxLinguistic;
 
+const int TaggerOption::DefaultOption = TaggerOption::OmitWhitespace | TaggerOption::OmitPunctuation | TaggerOption::JoinNames;
+
 #pragma mark namespace TransformType
 
 #define STRING(str) CFStringGetCStringPtr((CFStringRef)str, kCFStringEncodingASCII);
@@ -41,9 +43,44 @@ const string TagScheme::Lemma = STRING(NSLinguisticTagSchemeLemma);
 const string TagScheme::Language = STRING(NSLinguisticTagSchemeLanguage);
 const string TagScheme::Script = STRING(NSLinguisticTagSchemeScript);
 
+#pragma mark namespace TagType
+
+const string TagType::LexicalClass::Noun = STRING(NSLinguisticTagNoun);
+const string TagType::LexicalClass::Verb = STRING(NSLinguisticTagVerb);
+const string TagType::LexicalClass::Adjective = STRING(NSLinguisticTagAdjective);
+const string TagType::LexicalClass::Adverb = STRING(NSLinguisticTagAdverb);
+const string TagType::LexicalClass::Pronoun = STRING(NSLinguisticTagPronoun);
+const string TagType::LexicalClass::Determiner = STRING(NSLinguisticTagDeterminer);
+const string TagType::LexicalClass::Particle = STRING(NSLinguisticTagParticle);
+const string TagType::LexicalClass::Preposition = STRING(NSLinguisticTagPreposition);
+const string TagType::LexicalClass::Number = STRING(NSLinguisticTagNumber);
+const string TagType::LexicalClass::Conjunction = STRING(NSLinguisticTagConjunction);
+const string TagType::LexicalClass::Interjection = STRING(NSLinguisticTagInterjection);
+const string TagType::LexicalClass::Classifier = STRING(NSLinguisticTagClassifier);
+const string TagType::LexicalClass::Idiom = STRING(NSLinguisticTagIdiom);
+const string TagType::LexicalClass::OtherWord = STRING(NSLinguisticTagOtherWord);
+const string TagType::LexicalClass::SentenceTerminator = STRING(NSLinguisticTagSentenceTerminator);
+const string TagType::LexicalClass::OpenQuote = STRING(NSLinguisticTagOpenQuote);
+const string TagType::LexicalClass::CloseQuote = STRING(NSLinguisticTagCloseQuote);
+const string TagType::LexicalClass::OpenParenthesis = STRING(NSLinguisticTagOpenParenthesis);
+const string TagType::LexicalClass::CloseParenthesis = STRING(NSLinguisticTagCloseParenthesis);
+const string TagType::LexicalClass::WordJoiner = STRING(NSLinguisticTagWordJoiner);
+const string TagType::LexicalClass::Dash = STRING(NSLinguisticTagDash);
+const string TagType::LexicalClass::OtherPunctuation = STRING(NSLinguisticTagOtherPunctuation);
+const string TagType::LexicalClass::ParagraphBreak = STRING(NSLinguisticTagParagraphBreak);
+const string TagType::LexicalClass::OtherWhitespace = STRING(NSLinguisticTagOtherWhitespace);
+
+const string TagType::NameType::PersonalName = STRING(NSLinguisticTagPersonalName);
+const string TagType::NameType::PlaceName = STRING(NSLinguisticTagPlaceName);
+const string TagType::NameType::OrganizationName = STRING(NSLinguisticTagOrganizationName);
+
 #undef STRING
 
 #pragma mark namespace ScriptName
+
+/* **** **** **** **** **** **** **** **** **** **** *
+ * TODO: Where is I'll get all type...?              *
+ * **** **** **** **** **** **** **** **** **** **** */
 
 const string ScriptName::Latin = "Latn";
 const string ScriptName::Cyrilic = "Cyrl";
@@ -54,7 +91,7 @@ const string ScriptName::SimplifiedHan = "Hans";
 const string ScriptName::TraditionalHan = "Hant";
 const string ScriptName::Zyyy = "Zyyy";
 
-#pragma mark namespace ofxOrghographyLanguageCode
+#pragma mark namespace LanguageCode
 
 /* **** **** **** **** **** **** **** **** **** **** *
  * ISO 639: 2-letter codes                           *
@@ -196,4 +233,6 @@ const string LanguageCode::Wolof = "wo";
 const string LanguageCode::Xhosa = "xh";
 const string LanguageCode::Yoruba = "yo";
 const string LanguageCode::Chinese = "zh";
+const string LanguageCode::ChineseSimplified = "zh-Hans";
+const string LanguageCode::ChineseTraditional = "zh-Hant";
 const string LanguageCode::Zulu = "zu";

@@ -23,6 +23,7 @@ namespace ofxLinguistic {
             OmitOther = NSLinguisticTaggerOmitOther, /* Omit tokens of type NSLinguisticTagOther. */
             JoinNames = NSLinguisticTaggerJoinNames
         };
+        extern const int DefaultOption;
     };
     
     namespace TransformType {
@@ -52,6 +53,40 @@ namespace ofxLinguistic {
         extern const string Lemma;
         extern const string Language;
         extern const string Script;
+    };
+    
+    namespace TagType {
+        namespace LexicalClass {
+            extern const string Noun;
+            extern const string Verb;
+            extern const string Adjective;
+            extern const string Adverb;
+            extern const string Pronoun;
+            extern const string Determiner;
+            extern const string Particle;
+            extern const string Preposition;
+            extern const string Number;
+            extern const string Conjunction;
+            extern const string Interjection;
+            extern const string Classifier;
+            extern const string Idiom;
+            extern const string OtherWord;
+            extern const string SentenceTerminator;
+            extern const string OpenQuote;
+            extern const string CloseQuote;
+            extern const string OpenParenthesis;
+            extern const string CloseParenthesis;
+            extern const string WordJoiner;
+            extern const string Dash;
+            extern const string OtherPunctuation;
+            extern const string ParagraphBreak;
+            extern const string OtherWhitespace;
+        };
+        namespace NameType {
+            extern const string PersonalName;
+            extern const string PlaceName;
+            extern const string OrganizationName;
+        };
     };
     
     namespace ScriptName {
@@ -201,6 +236,8 @@ namespace ofxLinguistic {
         extern const string Xhosa;
         extern const string Yoruba;
         extern const string Chinese;
+        extern const string ChineseSimplified;
+        extern const string ChineseTraditional;
         extern const string Zulu;
     };
 };

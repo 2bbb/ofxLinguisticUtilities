@@ -11,8 +11,10 @@
 
 #include "ofMain.h"
 #include "ofxObjective-C++Utility.h"
-#import <AppKit/AppKit.h>
+#import <Foundation/Foundation.h>
+#import <CoreFoundation/CoreFoundation.h>
 
+#include "ofxLinguisticTaggingUtility.h"
 #include "ofxLinguisticUtilitiesConstant.h"
 
 namespace ofxLinguistic {
@@ -24,7 +26,7 @@ namespace ofxLinguistic {
         int sentenceBegin;
         int sentenceLength;
     } Tag;
-
+    
     class TagResult {
     public:
         TagResult(string &text, string &language, string &scheme) {
@@ -78,10 +80,9 @@ namespace ofxLinguistic {
     class Tagger {
     public:
         static vector<string> availableTagSchemes(string language);
-        static TagResult tagging(string text, string language = "en", string scheme = TagScheme::TokenType);
-        
-    //    void setup(string language = "en", string scheme = convert(NSLinguisticTagSchemeTokenType));
-    //    ofxLinguisticTagResult tagging(string text);
+        static TagResult tagging(string text);
+        static TagResult tagging(string text, string languageCode);
+        static TagResult tagging(string text, string languageCode, string tagScheme, int options = TaggerOption::DefaultOption);
         
     private:
     };

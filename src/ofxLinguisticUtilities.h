@@ -10,6 +10,7 @@
 #define ofxLinguisticTaggerExample_ofxLinguisticUtilities_h
 
 #include "ofxLinguisticUtilitiesConstant.h"
+#include "ofxLinguisticTaggingUtility.h"
 #include "ofxLinguisticTagger.h"
 #include "ofxStringTransform.h"
 

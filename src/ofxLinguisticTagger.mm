@@ -15,17 +15,31 @@ vector<string> Tagger::availableTagSchemes(string language) {
     return convertToVectorFromNSArray(schemes, convertFromNSStringToStringBlocks);
 }
 
-TagResult Tagger::tagging(string _text, string language, string scheme) {
-    NSLinguisticTaggerOptions options = TaggerOption::OmitWhitespace | TaggerOption::OmitPunctuation | TaggerOption::JoinNames;
-    NSArray *schemes = [NSLinguisticTagger availableTagSchemesForLanguage:convert(language)];
+TagResult Tagger::tagging(string text) {
+    string languageCode = getLanguageCode(text);
+    NSArray *schemes = [NSLinguisticTagger availableTagSchemesForLanguage:convert(languageCode)];
+    string tagScheme = convert((NSString *)[schemes objectAtIndex:0]);
+    
+    return tagging(text, languageCode, tagScheme);
+}
+
+TagResult Tagger::tagging(string text, string languageCode) {
+    NSArray *schemes = [NSLinguisticTagger availableTagSchemesForLanguage:convert(languageCode)];
+    string tagScheme = convert((NSString *)[schemes objectAtIndex:0]);
+    
+    return tagging(text, languageCode, tagScheme);
+}
+
+TagResult Tagger::tagging(string _text, string languageCode, string tagScheme, int options) {
+    NSArray *schemes = [NSLinguisticTagger availableTagSchemesForLanguage:convert(languageCode)];
     NSLinguisticTagger *tagger = [[NSLinguisticTagger alloc] initWithTagSchemes:schemes
                                                                         options:options];
     NSString *text = convert(_text);
     [tagger setString:text];
     
-    __block TagResult result(_text, language, scheme);
+    __block TagResult result(_text, languageCode, tagScheme);
     [tagger enumerateTagsInRange:NSMakeRange(0, [text length])
-                          scheme:convert(scheme)
+                          scheme:convert(tagScheme)
                          options:options
                       usingBlock:^(NSString *tag, NSRange tokenRange, NSRange sentenceRange, BOOL *stop) {
                           NSString *token = [text substringWithRange:tokenRange];
