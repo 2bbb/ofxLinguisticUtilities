@@ -9,8 +9,8 @@
 #ifndef ofxLinguisticTaggerExample_ofxLinguisticUtilities_h
 #define ofxLinguisticTaggerExample_ofxLinguisticUtilities_h
 
+#include "ofxLinguisticUtilitiesConstant.h"
 #include "ofxLinguisticTagger.h"
 #include "ofxStringTransform.h"
-#include "ofxLinguisticUtilitiesConstant.h"
 
 #endif

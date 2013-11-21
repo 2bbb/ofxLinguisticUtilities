@@ -8,43 +8,40 @@
 
 #include "ofxLinguisticUtilitiesConstant.h"
 
-using namespace ofxLinguisticUtilitiesConstant;
+using namespace ofxLinguistic;
 
 #pragma mark namespace TransformType
 
-#define CONV_CFSTRING_TO_STRING(str) CFStringGetCStringPtr(str, kCFStringEncodingASCII);
+#define STRING(str) CFStringGetCStringPtr((CFStringRef)str, kCFStringEncodingASCII);
 
-const string TransformType::StripCombiningMarks = CONV_CFSTRING_TO_STRING(kCFStringTransformStripCombiningMarks);
-const string TransformType::ToLatin = CONV_CFSTRING_TO_STRING(kCFStringTransformToLatin);
-const string TransformType::FullwidthHalfwidth = CONV_CFSTRING_TO_STRING(kCFStringTransformFullwidthHalfwidth);
-const string TransformType::LatinKatakana = CONV_CFSTRING_TO_STRING(kCFStringTransformLatinKatakana);
-const string TransformType::LatinHiragana = CONV_CFSTRING_TO_STRING(kCFStringTransformLatinHiragana);
-const string TransformType::HiraganaKatakana = CONV_CFSTRING_TO_STRING(kCFStringTransformHiraganaKatakana);
-const string TransformType::MandarinLatin = CONV_CFSTRING_TO_STRING(kCFStringTransformMandarinLatin);
-const string TransformType::LatinHangul = CONV_CFSTRING_TO_STRING(kCFStringTransformLatinHangul);
-const string TransformType::LatinArabic = CONV_CFSTRING_TO_STRING(kCFStringTransformLatinArabic);
-const string TransformType::LatinHebrew = CONV_CFSTRING_TO_STRING(kCFStringTransformLatinHebrew);
-const string TransformType::LatinThai = CONV_CFSTRING_TO_STRING(kCFStringTransformLatinThai);
-const string TransformType::LatinCyrillic = CONV_CFSTRING_TO_STRING(kCFStringTransformLatinCyrillic);
-const string TransformType::LatinGreek = CONV_CFSTRING_TO_STRING(kCFStringTransformLatinGreek);
-const string TransformType::ToXMLHex = CONV_CFSTRING_TO_STRING(kCFStringTransformToXMLHex);
-const string TransformType::ToUnicodeName = CONV_CFSTRING_TO_STRING(kCFStringTransformToUnicodeName);
-const string TransformType::StripDiacritics = CONV_CFSTRING_TO_STRING(kCFStringTransformStripDiacritics);
+const string TransformType::StripCombiningMarks = STRING(kCFStringTransformStripCombiningMarks);
+const string TransformType::ToLatin = STRING(kCFStringTransformToLatin);
+const string TransformType::FullwidthHalfwidth = STRING(kCFStringTransformFullwidthHalfwidth);
+const string TransformType::LatinKatakana = STRING(kCFStringTransformLatinKatakana);
+const string TransformType::LatinHiragana = STRING(kCFStringTransformLatinHiragana);
+const string TransformType::HiraganaKatakana = STRING(kCFStringTransformHiraganaKatakana);
+const string TransformType::MandarinLatin = STRING(kCFStringTransformMandarinLatin);
+const string TransformType::LatinHangul = STRING(kCFStringTransformLatinHangul);
+const string TransformType::LatinArabic = STRING(kCFStringTransformLatinArabic);
+const string TransformType::LatinHebrew = STRING(kCFStringTransformLatinHebrew);
+const string TransformType::LatinThai = STRING(kCFStringTransformLatinThai);
+const string TransformType::LatinCyrillic = STRING(kCFStringTransformLatinCyrillic);
+const string TransformType::LatinGreek = STRING(kCFStringTransformLatinGreek);
+const string TransformType::ToXMLHex = STRING(kCFStringTransformToXMLHex);
+const string TransformType::ToUnicodeName = STRING(kCFStringTransformToUnicodeName);
+const string TransformType::StripDiacritics = STRING(kCFStringTransformStripDiacritics);
 
 #pragma mark namespace TagScheme
 
-#define CONV_NSSTRING_TO_STRING(str) CONV_CFSTRING_TO_STRING((CFStringRef)str);
+const string TagScheme::TokenType = STRING(NSLinguisticTagSchemeTokenType);
+const string TagScheme::LexicalClass = STRING(NSLinguisticTagSchemeLexicalClass);
+const string TagScheme::NameType = STRING(NSLinguisticTagSchemeNameType);
+const string TagScheme::NameTypeOrLexicalClass = STRING(NSLinguisticTagSchemeNameTypeOrLexicalClass);
+const string TagScheme::Lemma = STRING(NSLinguisticTagSchemeLemma);
+const string TagScheme::Language = STRING(NSLinguisticTagSchemeLanguage);
+const string TagScheme::Script = STRING(NSLinguisticTagSchemeScript);
 
-const string TagScheme::TokenType = CONV_NSSTRING_TO_STRING(NSLinguisticTagSchemeTokenType);
-const string TagScheme::LexicalClass = CONV_NSSTRING_TO_STRING(NSLinguisticTagSchemeLexicalClass);
-const string TagScheme::NameType = CONV_NSSTRING_TO_STRING(NSLinguisticTagSchemeNameType);
-const string TagScheme::NameTypeOrLexicalClass = CONV_NSSTRING_TO_STRING(NSLinguisticTagSchemeNameTypeOrLexicalClass);
-const string TagScheme::Lemma = CONV_NSSTRING_TO_STRING(NSLinguisticTagSchemeLemma);
-const string TagScheme::Language = CONV_NSSTRING_TO_STRING(NSLinguisticTagSchemeLanguage);
-const string TagScheme::Script = CONV_NSSTRING_TO_STRING(NSLinguisticTagSchemeScript);
-
-#undef CONV_NSSTRING_TO_STRING
-#undef CONV_CFSTRING_TO_STRING
+#undef STRING
 
 #pragma mark namespace ScriptName
 

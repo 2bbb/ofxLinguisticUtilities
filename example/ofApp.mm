@@ -2,7 +2,6 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-    using namespace ofxLinguisticUtilitiesConstant;
     using namespace ofxLinguistic;
     
     string ________________ = "\n **** **** **** **** **** **** **** **** \n\n";

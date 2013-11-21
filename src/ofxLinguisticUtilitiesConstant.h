@@ -14,7 +14,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreFoundation/CoreFoundation.h>
 
-namespace ofxLinguisticUtilitiesConstant {
+namespace ofxLinguistic {
     namespace TaggerOption {
         enum {
             OmitWords = NSLinguisticTaggerOmitWords, /* Omit tokens of type NSLinguisticTagWord. */
