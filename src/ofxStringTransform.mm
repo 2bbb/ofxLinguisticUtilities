@@ -11,7 +11,7 @@
 
 #import <CoreFoundation/CoreFoundation.h>
 
-using namespace ofxLinguisticUtilitiesConstant::TransformType;
+using namespace ofxLinguistic::TransformType;
 string ofxStringTransform::transform(string text, string transformType = ToLatin, bool bReverse = false) {
     CFMutableStringRef resultRef = (CFMutableStringRef)[NSMutableString stringWithString:convert(text)];
     CFStringRef type = (CFStringRef)convert(transformType);

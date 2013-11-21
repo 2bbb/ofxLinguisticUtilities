@@ -8,7 +8,6 @@
 
 #include "ofxLinguisticTagger.h"
 
-using namespace ofxLinguisticUtilitiesConstant;
 using namespace ofxLinguistic;
 
 vector<string> Tagger::availableTagSchemes(string language) {
