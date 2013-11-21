@@ -14,7 +14,8 @@
 #include "ofxLinguisticUtilitiesConstant.h"
 
 namespace ofxStringTransform {
-    string transform(string text, string type, bool bReverse);
+    using namespace ofxLinguistic;
+    string transform(string text, string type = TransformType::ToLatin, bool bReverse = false);
     string getUnicodeName(string text);
     string getXMLHex(string text);
 };

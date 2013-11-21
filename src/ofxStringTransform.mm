@@ -12,7 +12,7 @@
 #import <CoreFoundation/CoreFoundation.h>
 
 using namespace ofxLinguistic::TransformType;
-string ofxStringTransform::transform(string text, string transformType = ToLatin, bool bReverse = false) {
+string ofxStringTransform::transform(string text, string transformType, bool bReverse) {
     CFMutableStringRef resultRef = (CFMutableStringRef)[NSMutableString stringWithString:convert(text)];
     CFStringRef type = (CFStringRef)convert(transformType);
     if(CFStringTransform(resultRef, NULL, type, (BOOL)bReverse)) {
