@@ -13,74 +13,78 @@
 #include "ofxObjective-C++Utility.h"
 #import <AppKit/AppKit.h>
 
-typedef struct {
-    string tag;
-    string token;
-    int tokenBegin;
-    int tokenLength;
-    int sentenceBegin;
-    int sentenceLength;
-} ofxLinguisticTag;
+#include "ofxLinguisticUtilitiesConstant.h"
 
-class ofxLinguisticTagResult {
-public:
-    ofxLinguisticTagResult(string &text, string &language, string &scheme) {
-        this->text     = text;
-        this->language = language;
-        this->scheme   = scheme;
-    }
-    
-    const int size() const {
-        return tags.size();
-    }
-    
-    const ofxLinguisticTag &operator [](int n) const {
-        return tags[n];
-    }
-    
-    void addTag(NSString *tag, NSString *token, int tokenBegin, int tokenLength, int sentenceBegin, int sentenceLength) {
-        tags.push_back((ofxLinguisticTag) {
-            .tag    = convert(tag),
-            .token  = convert(token),
-            .tokenBegin  = tokenBegin,
-            .tokenLength = tokenLength,
-            .sentenceBegin = sentenceBegin,
-            .sentenceLength = sentenceLength
-        });
-    }
-    
-    const vector<ofxLinguisticTag> &getTags() const {
-        return tags;
-    }
-    
-    const string &getText() const {
-        return text;
-    }
-    
-    const string &getLanguage() const {
-        return language;
-    }
-    
-    const string &getScheme() const {
-        return scheme;
-    }
-    
-private:
-    vector<ofxLinguisticTag> tags;
-    string text;
-    string language;
-    string scheme;
-};
+namespace ofxLinguistic {
+    typedef struct {
+        string tag;
+        string token;
+        int tokenBegin;
+        int tokenLength;
+        int sentenceBegin;
+        int sentenceLength;
+    } Tag;
 
-class ofxLinguisticTagger {
-public:
-    static vector<string> availableTagSchemes(string language);
-    static ofxLinguisticTagResult tagging(string text, string language = "en", string scheme = convert(NSLinguisticTagSchemeTokenType));
-    
-//    void setup(string language = "en", string scheme = convert(NSLinguisticTagSchemeTokenType));
-//    ofxLinguisticTagResult tagging(string text);
-    
-private:
-};
+    class TagResult {
+    public:
+        TagResult(string &text, string &language, string &scheme) {
+            this->text     = text;
+            this->language = language;
+            this->scheme   = scheme;
+        }
+        
+        const int size() const {
+            return tags.size();
+        }
+        
+        const Tag &operator [](int n) const {
+            return tags[n];
+        }
+        
+        void addTag(NSString *tag, NSString *token, int tokenBegin, int tokenLength, int sentenceBegin, int sentenceLength) {
+            tags.push_back((Tag) {
+                .tag    = convert(tag),
+                .token  = convert(token),
+                .tokenBegin  = tokenBegin,
+                .tokenLength = tokenLength,
+                .sentenceBegin = sentenceBegin,
+                .sentenceLength = sentenceLength
+            });
+        }
+        
+        const vector<Tag> &getTags() const {
+            return tags;
+        }
+        
+        const string &getText() const {
+            return text;
+        }
+        
+        const string &getLanguage() const {
+            return language;
+        }
+        
+        const string &getScheme() const {
+            return scheme;
+        }
+        
+    private:
+        vector<Tag> tags;
+        string text;
+        string language;
+        string scheme;
+    };
+
+    class Tagger {
+    public:
+        static vector<string> availableTagSchemes(string language);
+        static TagResult tagging(string text, string language = "en", string scheme = TagScheme::TokenType);
+        
+    //    void setup(string language = "en", string scheme = convert(NSLinguisticTagSchemeTokenType));
+    //    ofxLinguisticTagResult tagging(string text);
+        
+    private:
+    };
+}
 
 #endif /* defined(__ofxLinguisticTagger__) */

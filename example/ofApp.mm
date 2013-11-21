@@ -3,21 +3,23 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
     using namespace ofxLinguisticUtilitiesConstant;
+    using namespace ofxLinguistic;
     
     string ________________ = "\n **** **** **** **** **** **** **** **** \n\n";
     
     string taggingString = "Hello, I am a pen in Japan.";
     string taggingLanguage = LanguageCode::English;
-    vector<string> schemes = ofxLinguisticTagger::availableTagSchemes(taggingLanguage);
+    vector<string> schemes = Tagger::availableTagSchemes(taggingLanguage);
     for(int i = 0; i < schemes.size(); i++) {
         ofLogNotice("main:availableSchemes") << schemes[i];
     }
-    ofxLinguisticTagger::tagging(taggingString, taggingLanguage);
-    ofxLinguisticTagResult result = ofxLinguisticTagger::tagging(taggingString, taggingLanguage, schemes[6]);
+    
+    Tagger::tagging(taggingString, taggingLanguage);
+    TagResult result = Tagger::tagging(taggingString, taggingLanguage, schemes[6]);
     ofLogNotice("main:Result1") << "\"" << result.getText()<< "\" (" << result.getLanguage() << ", " << result.getScheme() << ")";
     
     for(int i = 0; i < result.size(); i++) {
-        const ofxLinguisticTag &tag = result[i];
+        const Tag &tag = result[i];
         ofLogNotice("main:Result1") << tag.tag << " : " << tag.token << " (" << tag.tokenBegin << ", " << tag.tokenLength << ")";
     }
 
@@ -25,16 +27,16 @@ void ofApp::setup(){
     
     taggingString = "こんにちは、私は日本のペンです。";
     taggingLanguage = LanguageCode::Japanese;
-    schemes = ofxLinguisticTagger::availableTagSchemes(taggingLanguage);
+    schemes = Tagger::availableTagSchemes(taggingLanguage);
     for(int i = 0; i < schemes.size(); i++) {
         ofLogNotice("main:availableSchemes") << schemes[i];
     }
     
-    result = ofxLinguisticTagger::tagging(taggingString, taggingLanguage, schemes[0]);
+    result = Tagger::tagging(taggingString, taggingLanguage, schemes[0]);
     ofLogNotice("main:Result2") << "\"" << result.getText()<< "\" (" << result.getLanguage() << ", " << result.getScheme() << ")";
     
     for(int i = 0; i < result.size(); i++) {
-        const ofxLinguisticTag &tag = result[i];
+        const Tag &tag = result[i];
         ofLogNotice("main:Result2") << tag.tag << " : " << tag.token << " (" << tag.tokenBegin << ", " << tag.tokenLength << ")";
     }
     

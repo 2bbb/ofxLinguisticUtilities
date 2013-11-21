@@ -8,20 +8,23 @@
 
 #include "ofxLinguisticTagger.h"
 
-vector<string> ofxLinguisticTagger::availableTagSchemes(string language) {
+using namespace ofxLinguisticUtilitiesConstant;
+using namespace ofxLinguistic;
+
+vector<string> Tagger::availableTagSchemes(string language) {
     NSArray *schemes = [NSLinguisticTagger availableTagSchemesForLanguage:convert(language)];
     return convertToVectorFromNSArray(schemes, convertFromNSStringToStringBlocks);
 }
 
-ofxLinguisticTagResult ofxLinguisticTagger::tagging(string _text, string language, string scheme) {
-    NSLinguisticTaggerOptions options = NSLinguisticTaggerOmitWhitespace | NSLinguisticTaggerOmitPunctuation | NSLinguisticTaggerJoinNames;
+TagResult Tagger::tagging(string _text, string language, string scheme) {
+    NSLinguisticTaggerOptions options = TaggerOption::OmitWhitespace | TaggerOption::OmitPunctuation | TaggerOption::JoinNames;
     NSArray *schemes = [NSLinguisticTagger availableTagSchemesForLanguage:convert(language)];
     NSLinguisticTagger *tagger = [[NSLinguisticTagger alloc] initWithTagSchemes:schemes
                                                                         options:options];
     NSString *text = convert(_text);
     [tagger setString:text];
     
-    __block ofxLinguisticTagResult result(_text, language, scheme);
+    __block TagResult result(_text, language, scheme);
     [tagger enumerateTagsInRange:NSMakeRange(0, [text length])
                           scheme:convert(scheme)
                          options:options

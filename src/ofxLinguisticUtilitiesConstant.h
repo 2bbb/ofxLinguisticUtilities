@@ -11,7 +11,20 @@
 
 #include "ofMain.h"
 
+#import <Foundation/Foundation.h>
+#import <CoreFoundation/CoreFoundation.h>
+
 namespace ofxLinguisticUtilitiesConstant {
+    namespace TaggerOption {
+        enum {
+            OmitWords = NSLinguisticTaggerOmitWords, /* Omit tokens of type NSLinguisticTagWord. */
+            OmitPunctuation = NSLinguisticTaggerOmitPunctuation, /* Omit tokens of type NSLinguisticTagPunctuation. */
+            OmitWhitespace = NSLinguisticTaggerOmitWhitespace, /* Omit tokens of type NSLinguisticTagWhitespace. */
+            OmitOther = NSLinguisticTaggerOmitOther, /* Omit tokens of type NSLinguisticTagOther. */
+            JoinNames = NSLinguisticTaggerJoinNames
+        };
+    };
+    
     namespace TransformType {
         extern const string StripCombiningMarks;
         extern const string ToLatin;
@@ -31,6 +44,16 @@ namespace ofxLinguisticUtilitiesConstant {
         extern const string StripDiacritics;
     };
 
+    namespace TagScheme {
+        extern const string TokenType;
+        extern const string LexicalClass;
+        extern const string NameType;
+        extern const string NameTypeOrLexicalClass;
+        extern const string Lemma;
+        extern const string Language;
+        extern const string Script;
+    };
+    
     namespace ScriptName {
         extern const string Latin;
         extern const string Cyrilic;
