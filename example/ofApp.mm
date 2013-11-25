@@ -13,7 +13,6 @@ void ofApp::setup(){
         ofLogNotice("main:availableSchemes") << schemes[i];
     }
     
-    Tagger::tagging(taggingString, taggingLanguage);
     TagResult result = Tagger::tagging(taggingString, taggingLanguage, TagScheme::NameTypeOrLexicalClass);
     ofLogNotice("main:Result1.0") << "\"" << result.getText()<< "\" (" << result.getLanguage() << ", " << result.getScheme() << ")";
     
@@ -75,6 +74,7 @@ void ofApp::setup(){
     
     cout << ________________;
     
+    taggingString = "こんにちは、私は日本のペンです。 Hello my name is not zachary lieberman.";
     ofLogNotice("main:Result2.0") << detectLanguageCode(taggingString);
     Orthography orth = detectLanguageDetail(taggingString);
     ofLogNotice("main:Result2.0") << orth.dominantScript << ", " << orth.dominantLanguage;
